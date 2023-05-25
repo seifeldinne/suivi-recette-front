@@ -1,0 +1,31 @@
+<div mat-dialog-title>
+    <h1>Ajout Demande de deploiement</h1>
+</div>
+<form [formGroup]="feedbackForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>nomSeance</mat-label>
+                <input matInput placeholder="" type="text" formControlName="nomSeance">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>description</mat-label>
+                <input matInput type="text" placeholder="" formControlName="description">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <div mat-dialog-actions class="action">
+                <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                <button mat-raised-button color="primary" type="submit">{{ 'Save'}}</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+
+

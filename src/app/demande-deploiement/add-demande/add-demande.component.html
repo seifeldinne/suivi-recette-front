@@ -1,0 +1,44 @@
+<div mat-dialog-title>
+    <h1>Ajout Demande de deploiement</h1>
+</div>
+<form [formGroup]="demandeForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label></mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dateDemande">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-select placeholder="Choisir le Projet" name="projet" [(ngModel)]="projet">
+                    <mat-option *ngFor="let projet of projetList" [value]="projet.nomProjet">{{ projet.nomProjet }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>mails</mat-label>
+                <input matInput placeholder="" type="email" formControlName="mails">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>observations</mat-label>
+                <input matInput type="text" placeholder="" formControlName="observations">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <div mat-dialog-actions class="action">
+                <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+

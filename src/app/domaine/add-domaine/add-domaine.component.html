@@ -1,0 +1,49 @@
+<div mat-dialog-title>
+    <h1>Ajout Demande de deploiement</h1>
+</div>
+<form [formGroup]="domaineForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>nom Domaine</mat-label>
+                <input matInput placeholder="" type="text" formControlName="nomDomaine">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>mrc</mat-label>
+                <input matInput type="text" placeholder="" formControlName="mrc">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>vetude</mat-label>
+                <input matInput type="text" placeholder="" formControlName="vetude">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>vorganisation</mat-label>
+                <input matInput type="text" placeholder="" formControlName="vorganisation">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>vmetier</mat-label>
+                <input matInput type="text" placeholder="" formControlName="vmetier">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div mat-dialog-actions class="action">
+                <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+

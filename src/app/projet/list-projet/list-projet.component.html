@@ -1,0 +1,78 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="float-md-end">
+
+                <button mat-icon-button color="primary" (click)="addProjet()">
+
+                        Ajouter Projet
+
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Gestion du Projet</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table mat-table [dataSource]="dataSource" class="table">
+                                <ng-container matColumnDef="Nom">
+                                    <th mat-header-cell *matHeaderCellDef> Nom</th>
+                                    <td mat-cell *matCellDef="let projet"> {{projet.nomProjet}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Phase">
+                                    <th mat-header-cell *matHeaderCellDef> Phase</th>
+                                    <td mat-cell *matCellDef="let projet"> {{projet.phaseProjet}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Statut">
+                                    <th mat-header-cell *matHeaderCellDef> Statut</th>
+                                    <td mat-cell *matCellDef="let projet"> {{projet.statutProjet}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Statut Prerequis">
+                                    <th mat-header-cell *matHeaderCellDef> Statut Prerequis</th>
+                                    <td mat-cell *matCellDef="let projet"> {{projet.statutPrerequis}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Date Debut">
+                                    <th mat-header-cell *matHeaderCellDef> Date Debut</th>
+                                    <td mat-cell *matCellDef="let projet"> {{projet.dateDebut}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="Date Fin">
+                                    <th mat-header-cell *matHeaderCellDef> Date Fin</th>
+                                    <td mat-cell *matCellDef="let projet">{{projet.dateFin}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="Domaine">
+                                    <th mat-header-cell *matHeaderCellDef> Domaine</th>
+                                    <td mat-cell *matCellDef="let projet"> {{projet.domaine.nomDomaine}}</td>
+                                </ng-container>
+                           <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <button mat-icon-button color="primary" (click)="openEditForm(row)">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button mat-icon-button color="warn" (click)="deleteProjet(row.idProjet)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                           showFirstLastButtons
+                                           aria-label="Select page of periodic elements">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

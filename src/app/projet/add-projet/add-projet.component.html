@@ -1,0 +1,58 @@
+<div mat-dialog-title>
+    <h1>Projet Form</h1>
+</div>
+<form [formGroup]="projetForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Nom</mat-label>
+                <input matInput type="text" placeholder="" formControlName="nomProjet">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Phase</mat-label>
+                <input matInput placeholder="" formControlName="phaseProjet">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Statut</mat-label>
+                <input matInput type="text" placeholder="" formControlName="statutProjet">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Statut Prerequis</mat-label>
+                <input matInput type="text" placeholder="" formControlName="statutPrerequis">
+            </mat-form-field>
+        </div>
+        <div class="row">
+        <mat-form-field>
+            <mat-select placeholder="Select Domaine" name="domaine"  [(ngModel)]="domaine">
+                <mat-option *ngFor="let domaine of domaineList" [value]="domaine">{{ domaine.nomDomaine }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </div>
+        <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Date Debut</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateDebut">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Date Fin</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dateFin">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

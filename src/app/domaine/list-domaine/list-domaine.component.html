@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="float-md-end">
+
+                    <button mat-icon-button color="primary" (click)="addDomaine()">
+
+                        Ajouter Domaine
+
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Gestion du Domande de depoloiement</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table mat-table [dataSource]="dataSource" class="table">
+                                <ng-container matColumnDef="nomDomaine">
+                                    <th mat-header-cell *matHeaderCellDef> nomDomaine</th>
+                                    <td mat-cell *matCellDef="let domaine"> {{domaine.nomDomaine}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="mrc">
+                                    <th mat-header-cell *matHeaderCellDef>mrc</th>
+                                    <td mat-cell *matCellDef="let domaine"> {{domaine.mrc}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="vetude">
+                                    <th mat-header-cell *matHeaderCellDef>vetude</th>
+                                    <td mat-cell *matCellDef="let domaine"> {{domaine.vetude}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="vorganisation">
+                                    <th mat-header-cell *matHeaderCellDef>vorganisation</th>
+                                    <td mat-cell *matCellDef="let domaine"> {{domaine.vorganisation}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="vmetier">
+                                    <th mat-header-cell *matHeaderCellDef>vmetier</th>
+                                    <td mat-cell *matCellDef="let domaine"> {{domaine.vmetier}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
+                                    <td mat-cell *matCellDef="let domaine">
+                                        <button mat-icon-button color="primary" (click)="openEditForm(domaine)">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button mat-icon-button color="warn" (click)="deleteDomaine(domaine.idDomaine)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                           showFirstLastButtons
+                                           aria-label="Select page of periodic elements">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
